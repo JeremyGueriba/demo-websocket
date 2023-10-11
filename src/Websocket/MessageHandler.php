@@ -25,7 +25,7 @@ class MessageHandler implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $message): void
     {
         foreach ($this->connections as $connection) {
-            if (!$this->connections->contains($from)) {
+            if ($from != $connection) {
                 $connection->send($message);
             }
         }
